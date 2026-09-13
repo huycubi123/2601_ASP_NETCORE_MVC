@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div>
+    <p>Truyên dũ liệu qua ViewBag</p>
+    <p>Id: @ViewBag.Product.Id</p>
+    <p>Name: @ViewBag.Product.Name</p>
+    <p>YearRelease: @ViewBag.Product.YearRelease</p>
+    <p>YearRelease: @ViewBag.Product.Price</p>
+</div>
+
+<div>
+
+    <h2> Truyển dữ liệu qua ViewData</h2>
+    @{
+        // chuyển dữ liệu về model Product
+            var product = ViewData["Product"] as Example02.Models.Product;
+            <p>@product.Id</p>
+            <p>@product.Name</p>
+            <p>@product.YearRelease</p>
+            <p>@product.Price</p>
+    }
+</div>
+
+<div>
+    <h2> Truyền dữ liệu qua TempData</h2>
+    @{
+        // chuyển dữ liệu về model Product
+        var productTemp = TempData["Product"] as Example02.Models.Product;
+            <p>@productTemp.Id</p>
+            <p>@productTemp.Name</p>
+            <p>@productTemp.YearRelease</p>
+            <p>@productTemp.Price</p>
+    }

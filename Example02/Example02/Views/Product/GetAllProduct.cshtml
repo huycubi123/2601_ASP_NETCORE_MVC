@@ -1,0 +1,47 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div>
+    <h2> Danh sách sản phẩm</h2>
+    <table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>YearRelease</th>
+        <th>Price</th>
+    </tr>
+        @foreach (var item in ViewBag.Products)
+        {
+            <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.YearRelease</td>
+            <td>@item.Price</td>
+            </tr>
+        }
+</table>
+</div>
+
+<div>
+    <h2> Danh sách sản phẩm truyền qua Model</h2>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>YearRelease</th>
+            <th>Price</th>
+        </tr>
+        @foreach (var item in Model)  // hoặc dùng ViewBag, ViewBag không cần truyền giá trị ở return view 
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.YearRelease</td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </table>
+</div>

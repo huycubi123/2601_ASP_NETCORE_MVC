@@ -1,0 +1,10 @@
+﻿@model PGH_Lesson03_View.Models.Product
+
+<h2>Chi tiết sản phẩm</h2>
+<div class="card">
+    <div class="card-body">
+        <h3>@Model.ProductName</h3>
+        <p>Giá: $@Model.Price</p>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </div>
+</div>

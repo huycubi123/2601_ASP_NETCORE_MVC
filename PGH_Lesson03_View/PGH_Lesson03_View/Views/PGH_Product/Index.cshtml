@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PGH_Lesson03_View.Models.Product>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<h2 class="text-primary mb-3">Danh sách sản phẩm</h2>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-6 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">@item.ProductName</h5>
+                    <p class="card-text">Giá: <strong>$@item.Price</strong></p>
+                    <a asp-action="Detail" asp-route-id="@item.ProductId" class="btn btn-sm btn-outline-primary">Xem chi tiết</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

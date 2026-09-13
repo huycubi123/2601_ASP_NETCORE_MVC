@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PGH_Lesson03_View</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PGH_Lesson03_View.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <!-- Header -->
+    <partial name="_PGH_PartialView_Header"/>
+    <!-- End Header -->
+
+    <div class="container body-content">
+        <div class="row">
+            <!-- Sidebar trái: Gọi ViewComponent hiển thị toàn bộ danh mục -->
+            <div class="col-md-3">
+                @await Component.InvokeAsync("PGH_Category")
+            </div>
+
+            <!-- Nội dung chính của trang -->
+            <div class="col-md-6">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+            <!-- Sidebar phải: Gọi ViewComponent truyền tham số (nếu muốn) -->
+            <div class="col-md-3">
+                @await Component.InvokeAsync("PGH_Category", new { n = 2 })
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <partial name="_PGH_PartialView_Footer"/>
+    <!--End Footer-->
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

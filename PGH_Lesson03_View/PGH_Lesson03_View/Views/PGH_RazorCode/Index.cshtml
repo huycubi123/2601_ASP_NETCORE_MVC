@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewData["Title"] = "Cú pháp Razor";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr/>
+@{
+    var message = "Xin chào các bạn!";
+    var currentDate = DateTime.Now;
+}
+@{
+    var total = 7000;
+}
+@{
+    var myMessage = "Biết người là trí, biết bản thân mới là trí tuệ thật sự. " +
+    "Thắng người là sự mạnh mẽ, thắng bản thân mới là sức mạnh thực sự";
+}
+
+<!-- Inline expressions -->
+<p>Tài khoản của bạn đang có: $ @total </p>
+<p>Câu nói để đời của Lão Tử: @myMessage</p>
+
+<!-- Multi-statement block -->
+@{
+    var greeting = "Chúc bạn thành công!";
+    var weekDay = DateTime.Now.DayOfWeek;
+    var greetingMessage = greeting + " Hôm nay là: " + weekDay;
+}
+<p>Lời chúc: @greetingMessage</p>
+
+<h2>Cấu trúc IF...ELSE</h2>
+
+@if (total >= 5000)
+{
+    <p>Bạn nằm trong số 30% những người giàu nhất thế giới</p>
+}
+else if (total >= 2000)
+{
+    <p>Bạn nằm trong số 50% những người giàu nhất thế giới</p>
+}
+else
+{
+    <p>Chưa có số liệu thống kê</p>
+}
+
+@{
+    if (total % 2 == 0)
+    {
+        <p>Số tiền trong tài khoản của bạn là số chẵn</p>
+    }
+    else
+    {
+        <p>Số tiền trong tài khoản của bạn là số lẻ</p>
+    }
+}
+
+<h2>Cấu trúc lặp</h2>
+@{
+    for (int i = 0; i < 10; i++)
+    {
+        if (i % 2 == 0)
+        {
+            <span class="btn btn-danger">@i</span>
+        }
+        else
+        {
+            <span class="btn btn-success">@i</span>
+        }
+    }
+}
