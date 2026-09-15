@@ -1,0 +1,22 @@
+﻿@model PGH_Lesson04_Model.Models.DataModels.PGH_Member
+
+@{
+    ViewData["Title"] = "Thông Tin Thành Viên";
+}
+
+<h2>Thông Tin Thành Viên</h2>
+
+<hr />
+
+<div class="card" style="width: 25rem;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.FullName</h5>
+        <h6 class="card-subtitle mb-2 text-muted">@Model.UserName</h6>
+
+        <ul class="list-group list-group-flush mt-3">
+            <li class="list-group-item"><strong>ID:</strong> @Model.MemberId</li>
+            <li class="list-group-item"><strong>Email:</strong> @Model.Email</li>
+            <li class="list-group-item"><strong>Password:</strong> @Model.Password</li>
+        </ul>
+    </div>
+</div>
