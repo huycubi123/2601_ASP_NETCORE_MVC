@@ -17,19 +17,19 @@ namespace PGH_Lesson04_Model.Controllers
         {
             return View(listMember);
         }
-
-        public IActionResult GetMember()
-        {
-            var pgh_member = new PGH_Member
-            {
-                MemberId = Guid.NewGuid().ToString(),
-                FullName = "John Doe",
-                UserName = "johndoe",
-                Email = "huy@gmail.com",
-                Password = Guid.NewGuid().ToString()
-            };
-            return View(pgh_member);
-        }
+        // 
+        //public IActionResult GetMember()
+        //{
+        //    var pgh_member = new PGH_Member
+        //    {
+        //        MemberId = Guid.NewGuid().ToString(),
+        //        FullName = "John Doe",
+        //        UserName = "johndoe",
+        //        Email = "huy@gmail.com",
+        //        Password = Guid.NewGuid().ToString()
+        //    };
+        //    return View(pgh_member);
+        //}
 
         // 1. Mở comment hàm GET này để hiển thị form Create
         [HttpGet]
@@ -50,5 +50,62 @@ namespace PGH_Lesson04_Model.Controllers
             }
             return View(pgh_member);
         }
+
+        public IActionResult Details(string id)
+        {
+            var member = listMember.FirstOrDefault(m => m.MemberId == id);
+            if (member == null) return NotFound();
+            return View(member);
+        }
+
+        //  CHỈNH SỬA (EDIT - GET)
+        [HttpGet]
+        public IActionResult Edit(string id)
+        {
+            var member = listMember.FirstOrDefault(m => m.MemberId == id);
+            if (member == null) return NotFound();
+            return View(member);
+        }
+
+        //  CHỈNH SỬA (EDIT - POST)
+        [HttpPost]
+        public IActionResult Edit(PGH_Member pgh_member)
+        {
+            if (ModelState.IsValid)
+            {
+                var member = listMember.FirstOrDefault(m => m.MemberId == pgh_member.MemberId);
+                if (member != null)
+                {
+                    member.FullName = pgh_member.FullName;
+                    member.UserName = pgh_member.UserName;
+                    member.Email = pgh_member.Email;
+                    member.Password = pgh_member.Password;
+                }
+                return RedirectToAction("Index");
+            }
+            return View(pgh_member);
+        }
+
+        //  XÓA (DELETE - GET)
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+            var member = listMember.FirstOrDefault(m => m.MemberId == id);
+            if (member == null) return NotFound();
+            return View(member);
+        }
+
+        // XÓA (DELETE - POST)
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(string id)
+        {
+            var member = listMember.FirstOrDefault(m => m.MemberId == id);
+            if (member != null)
+            {
+                listMember.Remove(member);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
+
